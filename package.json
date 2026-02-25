@@ -21,6 +21,7 @@
   },
   "license": "MIT",
   "scripts": {
+    "test": "bun test ./src/",
     "type-check": "tsc",
     "build": "bun build src/index.ts --compile --outfile dist/obi",
     "build:npm": "bun build src/index.ts --outfile dist/index.js --target bun",
