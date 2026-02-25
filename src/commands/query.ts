@@ -3,6 +3,34 @@ import { parseNote } from "../utils/parser.ts";
 import type { CommandContext } from "./shared.ts";
 import type { QueryResult } from "../types.ts";
 
+/**
+ * Check if a single note's frontmatter matches all filters (AND logic).
+ * The `tag` key is special-cased to match against the `tags` array.
+ */
+export function matchesFilters({
+	frontmatter,
+	filters,
+}: {
+	frontmatter: Record<string, unknown>;
+	filters: Record<string, string>;
+}): boolean {
+	return Object.entries(filters).every(([key, value]) => {
+		if (key === "tag") {
+			if (Array.isArray(frontmatter.tags)) {
+				return frontmatter.tags.some(
+					(t) => typeof t === "string" && t === value,
+				);
+			}
+			return false;
+		}
+		const fieldValue = frontmatter[key];
+		if (Array.isArray(fieldValue)) {
+			return fieldValue.some((v) => String(v) === value);
+		}
+		return String(fieldValue) === value;
+	});
+}
+
 export async function query({
 	ctx,
 	filters,
@@ -17,28 +45,8 @@ export async function query({
 	await Promise.all(
 		allNotes.map(async (notePath) => {
 			const parsed = await parseNote({ vault: ctx.vault, notePath });
-			const fm = parsed.frontmatter;
-
-			const isMatch = Object.entries(filters).every(([key, value]) => {
-				if (key === "tag") {
-					// Special handling: match against tags array
-					if (Array.isArray(fm.tags)) {
-						return fm.tags.some(
-							(t) => typeof t === "string" && t === value,
-						);
-					}
-					return false;
-				}
-				// Generic frontmatter field match
-				const fieldValue = fm[key];
-				if (Array.isArray(fieldValue)) {
-					return fieldValue.some((v) => String(v) === value);
-				}
-				return String(fieldValue) === value;
-			});
-
-			if (isMatch) {
-				results.push({ path: notePath, frontmatter: fm });
+			if (matchesFilters({ frontmatter: parsed.frontmatter, filters })) {
+				results.push({ path: notePath, frontmatter: parsed.frontmatter });
 			}
 		}),
 	);

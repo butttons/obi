@@ -28,7 +28,7 @@ program
 	.option("--json", "Output in JSON format")
 	.option("--vault <name>", "Target vault name");
 
-// --- Orientation ---
+/** Orientation commands */
 
 program
 	.command("vaults")
@@ -73,7 +73,7 @@ program
 		}),
 	);
 
-// --- Navigation ---
+/** Navigation commands */
 
 program
 	.command("read <path>")
@@ -120,7 +120,7 @@ program
 		}),
 	);
 
-// --- Query ---
+/** Query commands */
 
 program
 	.command("query")

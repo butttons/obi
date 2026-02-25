@@ -23,8 +23,11 @@ function handleError({ error }: { error: unknown }): never {
 	process.exit(1);
 }
 
-// wrapCommand uses `any` for args because Commander passes variadic positional + options
-// arguments and there is no way to type the spread generically without it
+/**
+ * Wraps a command function with error handling.
+ * Uses `any` for args because Commander passes variadic positional + options
+ * arguments and there is no way to type the spread generically without it.
+ */
 export function wrapCommand<T extends (...args: any[]) => Promise<any>>(
 	fn: T,
 ): T {
