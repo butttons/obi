@@ -37,11 +37,11 @@ Hard-coded (always): `.obsidian/`, `.git/`, `.pi/`, `node_modules/`.
 
 The templates folder (from `.obsidian/templates.json`) is auto-ignored.
 
-Per-vault ignore from config is additive. If both local (`<vault>/.obsidian/dot-obsidian.json`) and global (`~/.config/dot-obsidian/config.json`) config exist, local wins for ignore patterns.
+Per-vault ignore from config is additive. If both local (`<vault>/.obsidian/obi.json`) and global (`~/.config/obi/config.json`) config exist, local wins for ignore patterns.
 
 ## Config
 
-Global config lives at `~/.config/dot-obsidian/config.json`. Vault-local config lives at `<vault>/.obsidian/dot-obsidian.json`. Local config takes precedence over global for the same vault.
+Global config lives at `~/.config/obi/config.json`. Vault-local config lives at `<vault>/.obsidian/obi.json`. Local config takes precedence over global for the same vault.
 
 ## Error Handling
 

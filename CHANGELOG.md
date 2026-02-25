@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.0.2
+
+- Rename all config paths from `dot-obsidian` to `obi`
+- Global config now at `~/.config/obi/config.json`
+- Vault-local config now at `<vault>/.obsidian/obi.json`
+- Updated README with install options and binary downloads
+
 ## 0.0.1
 
 - Initial release

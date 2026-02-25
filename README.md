@@ -2,15 +2,67 @@
 
 Read-only CLI that surfaces structured data from Obsidian vaults for LLM consumption. Default output is TOON, with `--json` fallback.
 
-## Install
+## System Requirements
+
+- **Binary users**: No dependencies -- standalone executable
+- **Package manager**: [Bun](https://bun.sh) runtime required
+- **Supported OS**: macOS, Linux, Windows
+
+## Installation
+
+### Option 1: Package Manager
+
+Requires [Bun](https://bun.sh) runtime.
 
 ```bash
-# npm
-npm install -g @butttons/obi
-
-# binary (from GitHub releases)
-# Download the binary for your platform from the releases page
+bun add -g @butttons/obi
 ```
+
+### Option 2: Pre-built Binary
+
+Download the latest binary for your platform from the [releases page](https://github.com/butttons/obi/releases):
+
+```bash
+# macOS (ARM64)
+curl -L https://github.com/butttons/obi/releases/latest/download/obi-darwin-arm64 -o obi
+chmod +x obi
+sudo mv obi /usr/local/bin/
+
+# macOS (Intel)
+curl -L https://github.com/butttons/obi/releases/latest/download/obi-darwin-x64 -o obi
+chmod +x obi
+sudo mv obi /usr/local/bin/
+
+# Linux
+curl -L https://github.com/butttons/obi/releases/latest/download/obi-linux-x64 -o obi
+chmod +x obi
+sudo mv obi /usr/local/bin/
+
+# Windows
+# Download obi-windows-x64.exe from the releases page and add to PATH
+```
+
+### Option 3: Build from Source
+
+```bash
+git clone https://github.com/butttons/obi.git
+cd obi
+bun install
+bun run build
+sudo mv dist/obi /usr/local/bin/
+```
+
+## Updating
+
+### Package Manager
+
+```bash
+bun add -g @butttons/obi@latest
+```
+
+### Binary
+
+Re-run the curl command from [Option 2](#option-2-pre-built-binary) to download the latest release.
 
 ## Usage
 
@@ -85,7 +137,7 @@ When `--vault` is omitted:
 
 ### Global
 
-`~/.config/dot-obsidian/config.json`
+`~/.config/obi/config.json`
 
 ```json
 {
@@ -98,7 +150,7 @@ When `--vault` is omitted:
 
 ### Per-Vault
 
-`<vault>/.obsidian/dot-obsidian.json`
+`<vault>/.obsidian/obi.json`
 
 ```json
 {

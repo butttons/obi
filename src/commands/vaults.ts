@@ -13,7 +13,7 @@ export async function vaults(): Promise<VaultsResult> {
 	// Try to read default_vault from global config
 	let defaultVault: string | null = null;
 	try {
-		const configPath = `${process.env.HOME}/.config/dot-obsidian/config.json`;
+		const configPath = `${process.env.HOME}/.config/obi/config.json`;
 		const file = Bun.file(configPath);
 		const config = (await file.json()) as { default_vault?: string };
 		defaultVault = config.default_vault ?? null;

@@ -1,6 +1,6 @@
 {
   "name": "@butttons/obi",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "module": "src/index.ts",
   "type": "module",
   "description": "Read-only CLI for Obsidian vaults. Structured data for LLM consumption.",

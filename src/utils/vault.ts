@@ -11,7 +11,7 @@ const ICLOUD_VAULTS_PATH = join(
 
 const GLOBAL_CONFIG_PATH = join(
 	homedir(),
-	".config/dot-obsidian/config.json",
+	".config/obi/config.json",
 );
 
 const HARD_IGNORED = [".obsidian", ".git", ".pi", "node_modules"];
@@ -77,7 +77,7 @@ export async function listVaults(): Promise<Array<{ name: string; path: string }
 }
 
 /**
- * Load global config from ~/.config/dot-obsidian/config.json.
+ * Load global config from ~/.config/obi/config.json.
  */
 function loadGlobalConfig(): GlobalConfig {
 	if (!existsSync(GLOBAL_CONFIG_PATH)) {
@@ -105,10 +105,10 @@ async function loadGlobalConfigAsync(): Promise<GlobalConfig> {
 }
 
 /**
- * Load vault-local config from <vault>/.obsidian/dot-obsidian.json.
+ * Load vault-local config from <vault>/.obsidian/obi.json.
  */
 async function loadVaultLocalConfig({ vaultPath }: { vaultPath: string }): Promise<VaultLocalConfig> {
-	const configPath = join(vaultPath, ".obsidian", "dot-obsidian.json");
+	const configPath = join(vaultPath, ".obsidian", "obi.json");
 	if (!existsSync(configPath)) {
 		return {};
 	}
