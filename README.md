@@ -124,7 +124,7 @@ obi query --type worker --tag billing
 
 ## Vault Resolution
 
-1. `DOT_OBSIDIAN_PATH` env var pointing to the vaults parent directory
+1. `OBI_VAULTS_PATH` env var pointing to the vaults parent directory
 2. Falls back to `~/Library/Mobile Documents/iCloud~md~obsidian/Documents`
 3. If neither exists, errors with setup instructions
 

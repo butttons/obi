@@ -36,13 +36,13 @@ export type VaultContext = {
  * Resolve the parent directory containing all vaults.
  */
 export function resolveVaultsPath(): string {
-	const envPath = process.env.DOT_OBSIDIAN_PATH;
+	const envPath = process.env.OBI_VAULTS_PATH;
 	if (envPath) {
 		const resolved = resolve(envPath);
 		if (existsSync(resolved)) {
 			return resolved;
 		}
-		throw new ObiError("DOT_OBSIDIAN_PATH does not exist", "VAULTS_PATH_MISSING", {
+		throw new ObiError("OBI_VAULTS_PATH does not exist", "VAULTS_PATH_MISSING", {
 			path: resolved,
 		});
 	}
@@ -52,7 +52,7 @@ export function resolveVaultsPath(): string {
 	}
 
 	throw new ObiError(
-		"No vaults path found. Set DOT_OBSIDIAN_PATH or use iCloud Obsidian sync.",
+		"No vaults path found. Set OBI_VAULTS_PATH or use iCloud Obsidian sync.",
 		"VAULTS_PATH_MISSING",
 	);
 }
