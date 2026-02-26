@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.0.3
+
+- Add `word_count` and `size_bytes` fields to list, map, and read output
+- Rename `DOT_OBSIDIAN_PATH` env var to `OBI_VAULTS_PATH`
+
 ## 0.0.2
 
 - Rename all config paths from `dot-obsidian` to `obi`
