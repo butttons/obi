@@ -32,6 +32,8 @@ export async function list({
 				title: (fm.title as string) ?? null,
 				type: (fm.type as string) ?? null,
 				tags,
+				word_count: parsed.body.split(/\s+/).filter(Boolean).length,
+				size_bytes: Buffer.byteLength(parsed.body, "utf-8"),
 			};
 		}),
 	);

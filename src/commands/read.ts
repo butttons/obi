@@ -61,6 +61,8 @@ export async function read({
 		vault: ctx.vault.name,
 		frontmatter: parsed.frontmatter,
 		body,
+		word_count: body.split(/\s+/).filter(Boolean).length,
+		size_bytes: Buffer.byteLength(body, "utf-8"),
 		outgoing_links: parsed.outgoingLinks,
 		incoming_links: incoming.sort(),
 	};

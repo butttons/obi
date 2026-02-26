@@ -9,6 +9,8 @@ export const FileEntrySchema = z.object({
 	path: z.string(),
 	title: z.string().nullable(),
 	type: z.string().nullable(),
+	word_count: z.number(),
+	size_bytes: z.number(),
 });
 
 export const MapResultSchema = z.object({

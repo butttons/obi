@@ -5,6 +5,8 @@ export const ListEntrySchema = z.object({
 	title: z.string().nullable(),
 	type: z.string().nullable(),
 	tags: z.array(z.string()),
+	word_count: z.number(),
+	size_bytes: z.number(),
 });
 
 export const ListResultSchema = z.object({

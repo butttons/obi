@@ -5,6 +5,8 @@ export const ReadResultSchema = z.object({
 	vault: z.string(),
 	frontmatter: z.record(z.string(), z.unknown()),
 	body: z.string(),
+	word_count: z.number(),
+	size_bytes: z.number(),
 	outgoing_links: z.array(z.string()),
 	incoming_links: z.array(z.string()),
 });
