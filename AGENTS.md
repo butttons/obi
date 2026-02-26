@@ -58,6 +58,6 @@ Obsidian links can omit `.md` extensions and can be just a filename (shortest un
 
 ## Vault Path Resolution
 
-1. `DOT_OBSIDIAN_PATH` env var
+1. `OBI_VAULTS_PATH` env var
 2. `~/Library/Mobile Documents/iCloud~md~obsidian/Documents`
 3. Error with setup instructions

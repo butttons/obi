@@ -35,6 +35,8 @@ export async function map({ ctx }: { ctx: CommandContext }): Promise<MapResult> 
 				path: parsed.path,
 				title: (parsed.frontmatter.title as string) ?? null,
 				type: (parsed.frontmatter.type as string) ?? null,
+				word_count: parsed.body.split(/\s+/).filter(Boolean).length,
+				size_bytes: Buffer.byteLength(parsed.body, "utf-8"),
 			};
 		}),
 	);
